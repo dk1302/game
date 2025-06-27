@@ -3,8 +3,8 @@ and may not be redistributed without written permission.*/
 
 /* Headers */
 //Using SDL and STL string
-#include <SDL3/SDL.h>
-#include <SDL3/SDL_main.h>
+#include "SDL3/SDL.h"
+#include "SDL3/SDL_main.h"
 #include <string>
 
 struct flag {
