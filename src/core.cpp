@@ -14,15 +14,10 @@ struct flag Core::init()
     else
     {
         //Create window
-        if( gWindow = SDL_CreateWindow( "SDL3 Tutorial: Hello SDL3", window.kScreenWidth, window.kScreenHeight, 0 ); gWindow == nullptr )
+        if( SDL_CreateWindowAndRenderer( "SDL3 Tutorial: Textures and Extension Libraries", window.kScreenWidth, window.kScreenHeight, 0, &gWindow, &gRenderer ) == false)
         {
             SDL_Log( "Window could not be created! SDL error: %s\n", SDL_GetError() );
             success.val = 0;
-        }
-        else
-        {
-            //Get window surface
-            gScreenSurface = SDL_GetWindowSurface( gWindow );
         }
     }
 
@@ -34,8 +29,8 @@ struct flag Core::loadMedia()
     struct flag success = { 1 };
 
     //Load splash image
-    std::string imagePath{ "images/image.bmp" };
-    if( gImage = SDL_LoadBMP( imagePath.c_str() ); gImage == nullptr )
+    std::string imagePath{ "images/cloud.png" };
+    if( png.loadFromFile( imagePath.c_str(), gRenderer ) == false )
     {
         SDL_Log( "Unable to load image %s! SDL Error: %s\n", imagePath.c_str(), SDL_GetError() );
         success.val = 0;
@@ -46,14 +41,15 @@ struct flag Core::loadMedia()
 
 void Core::close()
 {
+    png.destroy();
+
+    SDL_DestroyRenderer( gRenderer );
+    gRenderer = nullptr;
     //Clean up surface
-    SDL_DestroySurface( gImage );
-    gImage = nullptr;
     
     //Destroy window
     SDL_DestroyWindow( gWindow );
     gWindow = nullptr;
-    gScreenSurface = nullptr;
 
     //Quit SDL subsystems
     SDL_Quit();

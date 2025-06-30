@@ -1,8 +1,3 @@
-/*This source code copyrighted by Lazy Foo' Productions 2004-2025
-and may not be redistributed without written permission.*/
-
-/* Headers */
-//Using SDL and STL string
 #include "core.h"
 
 int main( int argc, char* args[] )
@@ -48,15 +43,14 @@ int main( int argc, char* args[] )
                     }
                 }
 
-                //Fill the surface white
-                SDL_FillSurfaceRect( core.gScreenSurface, nullptr, SDL_MapSurfaceRGB( core.gScreenSurface, 0xFF, 0xFF, 0xFF ) );
+                SDL_SetRenderDrawColor( core.gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+                SDL_RenderClear( core.gRenderer );
             
                 //Render image on screen
-                SDL_BlitSurface( core.gImage, nullptr, core.gScreenSurface, nullptr );
+                core.png.render( 0.f, 0.f, core.gRenderer );
 
-                //Update the surface
-                SDL_UpdateWindowSurface( core.gWindow );
-            } 
+                //Update screen
+                SDL_RenderPresent( core.gRenderer );            } 
         }
     }
 

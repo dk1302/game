@@ -11,13 +11,24 @@ class Texture
         ~Texture();
 
         //Loads texture from disk
-        bool loadFromFile( std::string path );
+        bool loadFromFile( std::string path, SDL_Renderer* gRenderer );
 
         //Cleans up texture
         void destroy();
 
         //Draws texture
-        void render( float x, float y );
+        void render( float x, float y, SDL_Renderer* gRenderer );
+        
+        Texture( const Texture& ) = delete;
+
+        //Remove copy assignment
+        Texture& operator=( const Texture& ) = delete;
+
+        //Remove move constructor
+        Texture( Texture&& ) = delete;
+
+        //Remove move assignment
+        Texture& operator=( Texture&& ) = delete;
 
         //Gets texture attributes
         int getWidth();

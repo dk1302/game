@@ -1,6 +1,6 @@
 build
 Game
-sdl3
+sdl
 sdl_image
 .cache
 CmakeFiles
