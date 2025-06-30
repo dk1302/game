@@ -1,3 +1,4 @@
 build
 Game
-sdl
+sdl3
+sdl_image

@@ -1,8 +1,2 @@
-rm -rf build
-rm Game
-mkdir build
-cmake -DCMAKE_BUILD_TYPE=Debug -B build
-cd build
-make all
-cp Game ..
-cd ..
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G Ninja
+ninja
