@@ -1,4 +1,4 @@
-build/
+build/*
 !build/CMakeLists.txt
 !build/build.sh
 .cache
