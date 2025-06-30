@@ -3,7 +3,7 @@ Game
 sdl
 sdl_image
 .cache
-CmakeFiles
+CMakeFiles
 .ninja_deps
 .ninja_log
 build.ninja
