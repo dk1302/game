@@ -1,4 +1,1 @@
-build/*
-!build/CMakeLists.txt
-!build/build.sh
-.cache
+compile_commands.json
