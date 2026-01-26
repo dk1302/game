@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-rm -rf game
-nix-build
-cp result/bin/game game
-./game

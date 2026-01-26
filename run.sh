@@ -5,6 +5,4 @@ rm -rf compile_commands.json
 nix-build
 cp result/bin/game game
 cp result/bin/compile_commands.json compile_commands.json
-echo "" >gdb.output
-# gdb --command=gdb.conf --args game
-gdb game
+./game

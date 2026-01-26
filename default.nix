@@ -7,6 +7,7 @@ pkgs.stdenv.mkDerivation {
 
   buildInputs = with pkgs; [
     glfw
+    glm
   ];
 
   nativeBuildInputs = with pkgs; [
@@ -16,11 +17,18 @@ pkgs.stdenv.mkDerivation {
   dontStrip = true;
 
   buildPhase = ''
-    bear -- g++ -Og -ggdb -x c++ $src/src/glad.c $src/src/main.cpp -o game \
-      -I${glfw}/include/GLFW \
+    bear -- g++ -Og -ggdb -x c++ \
+      $src/src/main.cpp \
+      $src/src/renderer.cpp \
+      $src/src/glad.c \
+      -o game \
       -I$src/include \
+      -I${glfw}/include/GLFW \
       -L${glfw.out}/lib \
-      -lglfw\
+      -lglfw \
+      -I${glm}/include/glm \
+      -L${glm.out}/lib \
+      -lglm \
   '';
 
   installPhase = ''
